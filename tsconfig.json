@@ -1,16 +1,26 @@
 {
-  "compilerOptions": {
-    "target": "es2018",
-    "lib": ["es2018"],
-    "module": "commonjs",
-    "outDir": "./lib",
-    "rootDir": "./src"
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "spec",
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "target": "es2018",
+        "lib": [
+            "es2018"
+        ],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true,
+        "outDir": "./lib",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "types": [
+            "node",
+            "mocha",
+            "chai"
+        ]
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "spec",
+        "node_modules"
+    ]
 }
