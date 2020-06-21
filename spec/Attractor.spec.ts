@@ -1,5 +1,4 @@
-import 'mocha';
-import { expect } from 'chai';
+import 'jest';
 
 import { Attractor } from '../src/Attractor';
 
@@ -9,6 +8,6 @@ describe('Attractor', () => {
 
         const attractor = new Attractor();
 
-        expect(attractor.greet()).to.equal('Hello world!');
+        expect(attractor.greet()).toEqual('Hello world!');
     });
 });

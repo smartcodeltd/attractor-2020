@@ -9,12 +9,7 @@
         "strict": true,
         "outDir": "./lib",
         "rootDir": "./src",
-        "sourceMap": true,
-        "types": [
-            "node",
-            "mocha",
-            "chai"
-        ]
+        "sourceMap": true
     },
     "include": [
         "src/**/*.ts"
