@@ -6,6 +6,7 @@ export class Subscriber {
     private readonly announcements: Announcement[] = [];
 
     constructor(
+        public readonly id: string,
         private currentLocation: Location,
     ) {
     }

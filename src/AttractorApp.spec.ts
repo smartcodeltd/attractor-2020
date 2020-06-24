@@ -5,19 +5,35 @@ import { Attractor, Location, Network, Subscriber } from './core';
 
 describe('AttractorApp', () => {
 
-    it(`notifies a Subscriber of a local deal when she's within range of an attractor`, async () => {
+    let app: AttractorApp,
+        alice: Subscriber,
+        joe: Attractor;
 
-        const attractorApp = new AttractorApp(new Network());
+    const
+        joesLocation = new Location(0, 0),
+        joesRange = 10;
 
-        const attractor = new Attractor(new Location(0,0), 10,`Best coffee at Joe's`);
-        attractorApp.register(attractor);
+    beforeEach(() => {
+        app = new AttractorApp(new Network());
 
-        const alice = new Subscriber(new Location(0,10));
-        attractorApp.subscribe(alice);
+        joe = new Attractor(joesLocation, joesRange);
+        app.register(joe);
 
-        await attractorApp.run(1)
+        alice = new Subscriber('Alice', new Location(Infinity, Infinity));
+        app.subscribe(alice);
+    })
 
-        expect(alice.announcementsHeard()).toHaveLength(1);
-        expect(alice.announcementsHeard()[0].message).toEqual(`Best coffee at Joe's`);
+    describe(`notifies the Subscriber of a local deal when she`, () => {
+
+        it(`is within range of an attractor`, async () => {
+
+            alice.moveTo(joesLocation.plusX(joesRange))
+            joe.announce(`Best coffee at Joe's`);
+
+            await app.run(1);
+
+            expect(alice.announcementsHeard()).toHaveLength(1);
+            expect(alice.announcementsHeard()[0].message).toEqual(`Best coffee at Joe's`);
+        });
     });
 });

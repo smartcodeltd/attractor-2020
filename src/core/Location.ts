@@ -6,4 +6,12 @@ export class Location {
 
         return 0;
     }
+
+    plusX(delta: number): Location {
+        return new Location(this.x + delta, this.y);
+    }
+
+    plusY(delta: number): Location {
+        return new Location(this.x, this.y + delta);
+    }
 }

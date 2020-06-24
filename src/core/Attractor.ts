@@ -3,20 +3,24 @@ import { Announcement } from './Announcement';
 import { Subscriber } from './Subscriber';
 
 export class Attractor {
+    private announcement: Announcement | undefined;
+
     constructor(
         private readonly currentLocation: Location,
         private readonly maxReach: number,
-        private readonly message: string,
     ) {
     }
 
+    announce(message: string) {
+        this.announcement = new Announcement(message, new Date());
+    }
+
     shouldNotify(subscriber: Subscriber) {
-        return this.currentLocation.distanceFrom(subscriber.location()) <= this.maxReach;
+        return !! this.announcement
+            && this.currentLocation.distanceFrom(subscriber.location()) <= this.maxReach;
     }
 
     notify(subscriber: Subscriber) {
-        subscriber.notifyOf(
-            new Announcement(this.message, new Date())
-        )
+        subscriber.notifyOf(this.announcement as Announcement);
     }
 }
