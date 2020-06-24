@@ -10,7 +10,7 @@ so you’ll always know when a new coffee shop opens close to you!
 
 ## Setup
 
-You'll need [Node.js v. 10](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads).
+You'll need a recent [LTS](https://nodejs.org/en/about/releases/) version of [Node.js](https://nodejs.org/en/) and [Git](https://git-scm.com/downloads).
 
 [Clone](https://help.github.com/articles/cloning-a-repository/) this repository to your computer and run:
 
